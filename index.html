@@ -49,26 +49,58 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:3
 .burger{display:none;background:none;border:1px solid var(--lineN);color:var(--cream);width:44px;height:44px;border-radius:12px;font-size:20px;cursor:pointer}
 @media(max-width:1000px){.burger{display:block}.nav{position:fixed;inset:78px 0 auto;background:var(--deep);flex-direction:column;align-items:stretch;gap:0;padding:10px max(5vw,16px) 26px;display:none;border-top:1px solid var(--lineN)}.nav a{padding:15px 0;border-bottom:1px solid var(--lineN);font-size:17px}.nav .btn{margin-top:18px;justify-content:center}body.menu .nav{display:flex}body.menu .top{background:var(--deep)}}
 /* apertura */
-.hero{background:radial-gradient(120% 90% at 80% 20%,#14305a 0%,var(--navy) 45%,var(--deep) 100%);color:var(--cream);padding:150px 0 90px;position:relative;overflow:hidden}
-.hero .court{position:absolute;right:-6%;top:6%;width:min(980px,90vw);opacity:.55;pointer-events:none}
+.hero{background:radial-gradient(120% 90% at 80% 20%,#14305a 0%,var(--navy) 45%,var(--deep) 100%);color:var(--cream);padding:150px 0 110px;position:relative;overflow:hidden;isolation:isolate}
+.hero .court{position:absolute;right:-6%;top:6%;width:min(980px,90vw);opacity:.6;pointer-events:none;z-index:-1}
+.court .lines>*{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.2s cubic-bezier(.6,0,.2,1) forwards}
+.court .lines>*:nth-child(2){animation-delay:.35s}.court .lines>*:nth-child(3){animation-delay:.7s}.court .lines .net{animation-delay:1s;filter:drop-shadow(0 0 6px rgba(216,191,140,.8))}
+@keyframes draw{to{stroke-dashoffset:0}}
+.court .trail{stroke-dasharray:.16 1;stroke-dashoffset:1.16;animation:trail 3.2s cubic-bezier(.35,0,.4,1) 1.6s infinite}
+@keyframes trail{to{stroke-dashoffset:0}}
+.court .ball{filter:drop-shadow(0 0 10px rgba(255,220,150,.9));opacity:0;animation:bin .3s 1.6s forwards}@keyframes bin{to{opacity:1}}
+.beam{position:absolute;top:-30%;width:46%;height:150%;background:linear-gradient(180deg,rgba(216,191,140,.16),rgba(216,191,140,0) 70%);filter:blur(30px);transform-origin:top center;z-index:-1;opacity:0;animation:beamIn 2.4s .3s ease-out forwards,sway 14s 2.7s ease-in-out infinite alternate}
+.beam.b1{left:4%;transform:rotate(-22deg)}.beam.b2{right:2%;transform:rotate(20deg);animation-delay:.7s,3.1s}
+@keyframes beamIn{to{opacity:1}}@keyframes sway{to{transform:rotate(-10deg)}}
+.beam.b2{animation-name:beamIn,sway2}@keyframes sway2{to{transform:rotate(30deg)}}
+.spot{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(520px circle at var(--mx,70%) var(--my,30%),rgba(216,191,140,.13),transparent 60%);transition:background .2s}
+.dust{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 .h-in{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:56px;align-items:center}
-.hero h1{font-size:clamp(46px,5.8vw,86px);font-weight:500;margin:0 0 22px}
-.hero h1 i{color:var(--gold2)}
-.hero p{color:rgba(245,239,227,.78);font-size:18.5px;max-width:520px;margin:0 0 32px}
-.cta{display:flex;gap:12px;flex-wrap:wrap}
-.h-note{display:flex;gap:22px;flex-wrap:wrap;margin-top:38px;font-size:13.5px;color:rgba(245,239,227,.7)}
-.h-note span{display:flex;align-items:center;gap:8px}.h-note span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold2)}
-.stage{position:relative;padding:20px 0 40px}
+.h-kick{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);margin:0 0 22px;opacity:0;animation:up .8s .2s forwards}
+.h-kick img{border-radius:50%;box-shadow:0 0 0 4px rgba(216,191,140,.12),0 0 30px rgba(216,191,140,.35);animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rot{position:relative;display:inline-grid;color:var(--cream);font-weight:700}.rot b{grid-area:1/1;opacity:0;transform:translateY(60%);transition:.6s cubic-bezier(.2,.8,.2,1);white-space:nowrap}.rot b.on{opacity:1;transform:none}.rot b.out{opacity:0;transform:translateY(-60%)}
+.hero h1{font-size:clamp(46px,5.8vw,86px);font-weight:500;margin:0 0 22px;line-height:1.02}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}.hero h1 .w>span{display:inline-block;transform:translateY(110%);animation:wup 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .w:nth-child(1)>span{animation-delay:.35s}.hero h1 .w:nth-child(2)>span{animation-delay:.43s}.hero h1 .w:nth-child(3)>span{animation-delay:.51s}.hero h1 .w:nth-child(5)>span{animation-delay:.62s}.hero h1 .w:nth-child(6)>span{animation-delay:.70s}.hero h1 .w:nth-child(7)>span{animation-delay:.80s}
+@keyframes wup{to{transform:none}}
+.hero h1 i{color:var(--gold2);background:linear-gradient(100deg,#b8955a 20%,#fff1cf 45%,#d8bf8c 60%,#b8955a 80%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:gl 4.5s 1.8s ease-in-out infinite}
+@keyframes gl{0%{background-position:100% 0}60%,100%{background-position:-50% 0}}
+.hero .h-p{color:rgba(245,239,227,.78);font-size:18.5px;max-width:520px;margin:0 0 32px;opacity:0;animation:up .9s 1s forwards}
+.hero .cta{opacity:0;animation:up .9s 1.15s forwards}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.shine{position:relative;overflow:hidden}.shine::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:sh 3.6s 2.2s ease-in-out infinite}
+@keyframes sh{40%,100%{transform:translateX(120%)}}
+.h-mar{margin-top:40px;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);opacity:0;animation:up .9s 1.3s forwards}
+.h-track{display:flex;gap:28px;width:max-content;animation:mar 32s linear infinite}.h-track span{display:flex;align-items:center;gap:10px;font-size:13.5px;color:rgba(245,239,227,.72);white-space:nowrap}.h-track span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold2)}
+@keyframes mar{to{transform:translateX(-50%)}}
+.stage{position:relative;padding:20px 0 40px;perspective:1600px;opacity:0;animation:stIn 1.4s .5s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes stIn{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:none}}
+.tilt{position:relative;transform-style:preserve-3d;transform:rotateY(var(--ry,-8deg)) rotateX(var(--rx,4deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .laptop{position:relative;z-index:1}
-.laptop .scr{background:#0c1220;border-radius:14px 14px 4px 4px;padding:10px 10px 12px;border:1px solid rgba(216,191,140,.35);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
-.laptop .scr img{border-radius:4px;aspect-ratio:16/10;object-fit:cover;object-position:top;width:100%}
+.laptop .scr{position:relative;background:#0c1220;border-radius:14px 14px 4px 4px;padding:10px 10px 12px;border:1px solid rgba(216,191,140,.35);box-shadow:0 50px 90px -30px rgba(0,0,0,.8),0 0 60px -20px rgba(216,191,140,.35);overflow:hidden}
+.sl{position:relative;aspect-ratio:16/10;border-radius:4px;overflow:hidden}.phone .sl{aspect-ratio:9/19.5;border-radius:23px}
+.sl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:scale(1.04);transition:opacity 1s ease,transform 6s ease-out}.sl img.on{opacity:1;transform:none}
+.glare{position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.12) 48%,transparent 60%);transform:translateX(var(--gx,-30%));pointer-events:none;transition:transform .5s}
 .laptop .base{height:14px;margin:0 -5%;background:linear-gradient(180deg,#c9b083,#8c7044);border-radius:0 0 14px 14px}
-.phone{position:absolute;z-index:2;right:-14px;bottom:-6px;width:28%;background:#0c1220;border-radius:30px;padding:8px;border:1px solid rgba(216,191,140,.45);box-shadow:0 30px 60px -20px rgba(0,0,0,.75)}
-.phone img{border-radius:23px;aspect-ratio:9/19.5;object-fit:cover;object-position:top;width:100%}
-.ticket{position:absolute;z-index:3;left:-26px;bottom:26px;background:var(--paper);color:var(--ink);border-radius:16px;padding:14px 18px;box-shadow:0 24px 50px -20px rgba(0,0,0,.6);border-left:3px solid var(--gold);animation:fl 6s ease-in-out infinite}
-.ticket small{display:block;font-size:12px;color:var(--soft)}.ticket b{font:600 19px var(--serif)}
-@keyframes fl{50%{transform:translateY(-8px)}}
-@media(max-width:900px){.h-in{grid-template-columns:minmax(0,1fr)}.hero{padding:120px 0 70px}.ticket{left:6px}.phone{right:0}}
+.phone{position:absolute;z-index:2;right:-14px;bottom:-6px;width:28%;background:#0c1220;border-radius:30px;padding:8px;border:1px solid rgba(216,191,140,.45);box-shadow:0 30px 60px -20px rgba(0,0,0,.75);transform:translateZ(60px);animation:fl 7s ease-in-out infinite}
+.toasts{position:absolute;z-index:3;left:-30px;bottom:18px;display:grid;gap:10px;width:290px;pointer-events:none}
+.toast{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.97);color:var(--ink);border-radius:16px;padding:12px 16px;box-shadow:0 24px 50px -20px rgba(0,0,0,.6);border-left:3px solid var(--gold);transform:translateX(-30px) scale(.95);opacity:0;transition:.6s cubic-bezier(.2,.8,.2,1)}
+.toast.in{transform:none;opacity:1}.toast.gone{opacity:0;transform:translateY(-14px) scale(.96)}
+.toast i{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-style:normal;font-size:16px;background:var(--cream)}.toast.wa i{background:#d9fdd3}
+.toast small{display:block;font-size:11.5px;color:var(--soft)}.toast b{font:600 16px/1.2 var(--serif)}
+@keyframes fl{50%{transform:translateZ(60px) translateY(-10px)}}
+.h-down{position:absolute;left:50%;bottom:26px;width:26px;height:42px;border:1.5px solid rgba(216,191,140,.6);border-radius:14px;transform:translateX(-50%)}.h-down span{position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--gold2);animation:dn 1.8s infinite}
+@keyframes dn{0%{opacity:0;transform:translateY(0)}30%{opacity:1}80%,100%{opacity:0;transform:translateY(14px)}}
+@media(max-width:900px){.h-in{grid-template-columns:minmax(0,1fr)}.hero{padding:120px 0 90px}.toasts{left:0;width:250px;bottom:-4px}.phone{right:0}.tilt{transform:none}.beam{width:80%}.h-down{display:none}}
 /* nastro dei valori */
 .vals{background:var(--deep);color:var(--cream);border-top:1px solid var(--lineN);padding:0}
 .vals .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -115,6 +147,23 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:3
 .sti .lead,.sti .sdesc p{color:rgba(245,239,227,.75)}.sti .sdesc li::before{background:var(--gold2)}
 .sti .seg{background:rgba(255,255,255,.08)}.sti .seg button{color:var(--cream)}.sti .seg button.on{background:var(--gold);color:#fff}
 .sti .brw{border-color:var(--lineN);box-shadow:0 40px 90px -40px rgba(0,0,0,.7)}.sti .sdesc .btn.b-navy{background:var(--gold);color:#fff}
+/* edizioni + stili */
+.anc{position:relative;top:-90px;display:block}
+.sp2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:44px 0 22px}
+.sp2 button{position:relative;display:flex;align-items:center;gap:16px;text-align:left;padding:20px 24px;border-radius:20px;border:1px solid var(--lineN);background:rgba(255,255,255,.04);color:var(--cream);cursor:pointer;transition:.35s;overflow:hidden}
+.sp2 button::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 140% at 0% 0%,rgba(216,191,140,.22),transparent 60%);opacity:0;transition:.35s}
+.sp2 button:hover{transform:translateY(-3px);border-color:rgba(216,191,140,.5)}
+.sp2 button.on{border-color:var(--gold);box-shadow:0 20px 50px -25px rgba(216,191,140,.55)}.sp2 button.on::before{opacity:1}
+.sp2 .ic{position:relative;width:52px;height:52px;flex:none;display:grid;place-items:center;color:var(--gold2);border-radius:16px;background:rgba(216,191,140,.12);transition:.5s}.sp2 button.on .ic{background:var(--gold);color:var(--navy);transform:rotate(-8deg) scale(1.05)}
+.sp2 b{position:relative;display:block;font:500 26px/1.1 var(--serif)}.sp2 b i{color:var(--gold2)}.sp2 small{position:relative;color:rgba(245,239,227,.65);font-size:13.5px}
+.sti .seg{position:relative}.sti .seg button{position:relative;z-index:1;background:transparent!important;transition:color .3s}.sti .seg button.on{color:#fff}
+.prog{position:absolute;top:4px;bottom:4px;left:4px;border-radius:999px;background:var(--gold);transition:left .45s cubic-bezier(.2,.8,.2,1),width .45s;z-index:0}
+.sti .brw{transition:transform .4s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.sti .brw .sl{position:relative;aspect-ratio:16/10;overflow:hidden}
+.sti .brw .sl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transform:scale(1.03);transition:opacity .7s,transform 1.2s cubic-bezier(.2,.8,.2,1)}.sti .brw .sl img.on{opacity:1;transform:none}
+.sdesc.in>*{animation:up .6s both}.sdesc.in>*:nth-child(2){animation-delay:.06s}.sdesc.in>*:nth-child(3){animation-delay:.12s}.sdesc.in>*:nth-child(4){animation-delay:.18s}.sdesc.in>*:nth-child(5){animation-delay:.24s}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.chips span{font-size:12.5px;padding:7px 12px;border-radius:999px;border:1px solid var(--lineN);color:rgba(245,239,227,.82)}
+@media(max-width:700px){.sp2{grid-template-columns:1fr}.sp2 b{font-size:22px}}
 /* gestionale */
 .gest{background:var(--navy);color:var(--cream)}
 .gest .lead{color:rgba(245,239,227,.75)}
@@ -203,28 +252,42 @@ footer nav{display:flex;gap:22px;flex-wrap:wrap}footer a{text-decoration:none}fo
   <div class="wrap in">
     <a class="logo" href="#"><img src="img/cc-logo-160.webp" srcset="img/cc-logo-160.webp 1x, img/cc-logo-320.webp 2x" alt="Logo Central Court" width="46" height="46"><span><b>Central Court</b><small>Gestionale per circoli</small></span></a>
     <nav class="nav" id="nav">
-      <a href="#prodotto">Il prodotto</a><a href="#gestionale">Il gestionale</a><a href="#edizioni">Tennis e padel</a><a href="#stili">I siti</a><a href="#misura">Su misura</a><a href="#prezzi">Prezzi</a><a href="#domande">Domande</a>
+      <a href="#prodotto">Il prodotto</a><a href="#gestionale">Il gestionale</a><a href="#edizioni">Tennis e padel</a><a href="#misura">Su misura</a><a href="#prezzi">Prezzi</a><a href="#domande">Domande</a>
       <a class="btn b-gold" href="#contatti">Richiedi una presentazione</a>
     </nav>
     <button class="burger" id="burger" aria-label="Apri il menu">☰</button>
   </div>
 </header>
 
-<section class="hero">
-  <svg class="court" viewBox="0 0 1000 560" aria-hidden="true"><g fill="none" stroke="#d8bf8c" stroke-width="1.2"><rect x="60" y="40" width="880" height="480"/><path d="M60 98h880M60 462h880M280 98v364M720 98v364M280 280h440"/><path d="M500 30v500" stroke-width="2.4"/><circle cx="500" cy="280" r="4" fill="#d8bf8c"/></g><g fill="none" stroke="#d8bf8c" stroke-width=".5" opacity=".5"><rect x="20" y="0" width="960" height="560"/></g></svg>
+<section class="hero" id="top">
+  <div class="beam b1"></div><div class="beam b2"></div><div class="spot" id="spot"></div>
+  <canvas class="dust" id="dust" aria-hidden="true"></canvas>
+  <svg class="court" viewBox="0 0 1000 560" aria-hidden="true">
+    <defs><radialGradient id="gb"><stop offset="0" stop-color="#fff3d6"/><stop offset=".55" stop-color="#e8cf98"/><stop offset="1" stop-color="#b8955a"/></radialGradient>
+      <linearGradient id="tr" x1="0" x2="1"><stop offset="0" stop-color="#d8bf8c" stop-opacity="0"/><stop offset="1" stop-color="#d8bf8c" stop-opacity=".9"/></linearGradient></defs>
+    <g class="lines" fill="none" stroke="#d8bf8c" stroke-width="1.2"><rect x="60" y="40" width="880" height="480" pathLength="1"/><path d="M60 98h880M60 462h880" pathLength="1"/><path d="M280 98v364M720 98v364M280 280h440" pathLength="1"/><path class="net" d="M500 30v500" stroke-width="2.4" pathLength="1"/></g>
+    <g fill="none" stroke="#d8bf8c" stroke-width=".5" opacity=".4"><rect x="20" y="0" width="960" height="560"/></g>
+    <path id="arc" d="M60 330 Q 260 -40 500 70 T 960 40" fill="none"/>
+    <path class="trail" d="M60 330 Q 260 -40 500 70 T 960 40" stroke="url(#tr)" stroke-width="3" fill="none" pathLength="1"/>
+    <circle class="ball" r="13" fill="url(#gb)"><animateMotion dur="3.2s" repeatCount="indefinite" begin="1.6s" keyPoints="0;1" keyTimes="0;1" calcMode="spline" keySplines=".35 0 .4 1"><mpath href="#arc"/></animateMotion></circle>
+  </svg>
   <div class="wrap h-in">
-    <div>
-      <h1>Tutto il circolo,<br>in pochi <i>clic.</i></h1>
-      <p>Un gestionale completo e veloce per la segreteria, un sito elegante e interattivo per i soci. Prenotazioni, soci, scadenze, tornei, scuola e conti in un unico sistema, per circoli di tennis e padel, personalizzato sulle vostre esigenze.</p>
-      <div class="cta"><a class="btn b-gold" href="#edizioni">Guarda le demo dal vivo</a><a class="btn b-line" href="#contatti">Parliamo del tuo circolo</a></div>
-      <div class="h-note"><span>Su misura del tuo circolo</span><span>Consegna in 15 giorni lavorativi</span><span>Nessuna commissione</span></div>
+    <div class="h-tx">
+      <p class="h-kick"><img src="img/cc-logo-160.webp" alt="" width="34" height="34">Per circoli di <span class="rot" id="rot"><b class="on">tennis</b><b>padel</b><b>tennis e padel</b></span></p>
+      <h1><span class="w"><span>Tutto</span></span> <span class="w"><span>il</span></span> <span class="w"><span>circolo,</span></span><br><span class="w"><span>in</span></span> <span class="w"><span>pochi</span></span> <span class="w"><span><i>clic.</i></span></span></h1>
+      <p class="h-p">Un gestionale completo e veloce per la segreteria, un sito elegante e interattivo per i soci. Prenotazioni, soci, scadenze, tornei, scuola e conti in un unico sistema, personalizzato sulle vostre esigenze.</p>
+      <div class="cta"><a class="btn b-gold shine" href="#edizioni">Guarda le demo dal vivo</a><a class="btn b-line" href="#contatti">Parliamo del tuo circolo</a></div>
+      <div class="h-mar"><div class="h-track"><span>Prenotazioni online</span><span>Soci e scadenze</span><span>Tornei e tabelloni</span><span>Inviti su WhatsApp</span><span>Scuola e corsi</span><span>Contabilità e ricevute</span><span>Utenti e permessi</span><span>Risultati live</span><span>Prenotazioni online</span><span>Soci e scadenze</span><span>Tornei e tabelloni</span><span>Inviti su WhatsApp</span><span>Scuola e corsi</span><span>Contabilità e ricevute</span><span>Utenti e permessi</span><span>Risultati live</span></div></div>
     </div>
-    <div class="stage">
-      <div class="laptop"><div class="scr"><img src="img/tennis-elegante.jpg" alt="Home page del sito di un circolo di tennis realizzato con Central Court"></div><div class="base"></div></div>
-      <div class="phone"><img src="img/mob-tennis.jpg" alt="Lo stesso sito sullo smartphone, con la prenotazione in primo piano"></div>
-      <div class="ticket"><small>Prenotazione confermata</small><b>Campo 1 · oggi alle 18:00</b></div>
+    <div class="stage" id="stage">
+      <div class="tilt" id="tilt">
+        <div class="laptop"><div class="scr"><div class="sl" id="slides"><img class="on" src="img/tennis-elegante.jpg" alt="Sito di un circolo di tennis realizzato con Central Court"><img src="img/padel-vivace.jpg" alt="Sito di un circolo di padel, stile Vivace"><img src="img/tennis-moderna.jpg" alt="Sito di tennis, stile Moderna"><img src="img/g-panoramica.jpg" alt="Panoramica del gestionale"><img src="img/padel-elegante.jpg" alt="Sito di padel, stile Elegante"></div><span class="glare"></span></div><div class="base"></div></div>
+        <div class="phone"><div class="sl" id="pslides"><img class="on" src="img/mob-tennis.jpg" alt="Il sito sullo smartphone"><img src="img/mob-padel.jpg" alt="Il sito di padel sullo smartphone"><img src="img/mob-prenota.jpg" alt="La prenotazione dal telefono"></div></div>
+      </div>
+      <div class="toasts" id="toasts"></div>
     </div>
   </div>
+  <a class="h-down" href="#prodotto" aria-label="Scorri"><span></span></a>
 </section>
 
 <div class="vals"><div class="wrap">
@@ -261,32 +324,16 @@ footer nav{display:flex;gap:22px;flex-wrap:wrap}footer a{text-decoration:none}fo
   </div>
 </section>
 
-<section class="ed" id="edizioni">
+<section class="sti" id="edizioni"><span id="stili" class="anc"></span>
   <div class="wrap">
-    <div class="split"><div><p class="kick">Due edizioni</p><h2 class="h2">Due sport. Due edizioni. La stessa cura.</h2></div><p class="lead">Il tennis e il padel hanno tempi, regole e linguaggi diversi. Per questo Central Court nasce in due edizioni costruite da zero per ciascuno sport, ognuna con il suo sito, il suo gestionale e la sua identità. Provale entrambe: sono demo complete, gestionale compreso.</p></div>
-    <div class="eds">
-      <article class="edc">
-        <div class="pic"><img src="img/tennis-elegante.jpg" alt="Sito di esempio del circolo Match Point"></div>
-        <div class="tx"><h3>Central Court <i>Tennis</i></h3>
-          <ul><li>Prenotazioni da un'ora o due, con supplemento luce</li><li>Tabelloni dei tornei e torneo sociale con classifica automatica</li><li>Maestri, scuola tennis e quote mensili degli allievi</li><li>Soci, tessere FITP e certificati medici sotto controllo</li></ul>
-          <div class="cta"><a class="btn b-gold" href="demo/tennis/" target="_blank" rel="noopener">Apri la demo Match Point</a></div></div>
-      </article>
-      <article class="edc">
-        <div class="pic"><img src="img/padel-elegante.jpg" alt="Sito di esempio del circolo Onda Padel"></div>
-        <div class="tx"><h3>Central Court <i>Padel</i></h3>
-          <ul><li>Turni da 60, 90 o 120 minuti, prenotabili ogni mezz'ora</li><li>Tornei a coppie, serate Americano e lega del circolo</li><li>Istruttori, scuola padel e calendario a mezz'ora</li><li>Colori e stile pensati per l'energia del padel</li></ul>
-          <div class="cta"><a class="btn b-gold" href="demo/padel/" target="_blank" rel="noopener">Apri la demo Onda Padel</a></div></div>
-      </article>
+    <div class="split"><div><p class="kick">Tennis e padel · i siti</p><h2 class="h2">Due sport, tre stili. La stessa cura.</h2></div><p class="lead">Tennis e padel hanno tempi, regole e linguaggi diversi: per questo Central Court nasce in due edizioni costruite da zero, ognuna con il suo sito, il suo gestionale e la sua identità. Poi scegliete lo stile del sito fra tre impaginazioni, e lo cambiate in un clic anche dopo.</p></div>
+    <div class="sp2" id="sSport">
+      <button class="on" data-v="tennis"><span class="ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="16" cy="15" rx="10" ry="12" transform="rotate(-35 16 15)"/><path d="M8 9l14 14M11 5l14 14M6 14l12 12M13 22l-3 3M24 24l9 9" stroke-width="1.3"/><path d="M22.5 23.5l9.5 9.5" stroke-width="3.4" stroke-linecap="round"/><circle cx="32" cy="10" r="4" fill="currentColor" stroke="none"/></svg></span><span><b>Central Court <i>Tennis</i></b><small>Demo del circolo Match Point</small></span></button>
+      <button data-v="padel"><span class="ic"><svg viewBox="0 0 40 40" width="30" height="30" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 6.5c5-5 15-3.5 19.5 1s6 14.5 1 19.5c-3.4 3.4-9 3-12.6 1.6L9 36l-5-5 7.4-7.4C10 20 5.1 9.9 8.5 6.5z"/><g fill="currentColor" stroke="none"><circle cx="16" cy="12" r="1.4"/><circle cx="21" cy="12" r="1.4"/><circle cx="16" cy="17" r="1.4"/><circle cx="21" cy="17" r="1.4"/><circle cx="26" cy="17" r="1.4"/><circle cx="21" cy="22" r="1.4"/><circle cx="26" cy="22" r="1.4"/></g></svg></span><span><b>Central Court <i>Padel</i></b><small>Demo del circolo Onda Padel</small></span></button>
     </div>
-  </div>
-</section>
-
-<section class="sti" id="stili">
-  <div class="wrap">
-    <div class="split"><div><p class="kick">I siti</p><h2 class="h2">Tre stili. Scegli quello che vi somiglia.</h2></div><p class="lead">Il sito del circolo non è un modello uguale per tutti. Scegliete fra tre impaginazioni diverse e il gestionale resta lo stesso: si cambia stile in un clic, anche dopo.</p></div>
-    <div class="ctrls"><div class="seg" id="sStile"><button class="on" data-v="elegante">Elegante</button><button data-v="vivace">Vivace</button><button data-v="moderna">Moderna</button></div><div class="seg" id="sSport"><button class="on" data-v="tennis">Tennis</button><button data-v="padel">Padel</button></div></div>
+    <div class="ctrls"><div class="seg" id="sStile"><button class="on" data-v="elegante">Elegante</button><button data-v="vivace">Vivace</button><button data-v="moderna">Moderna</button><span class="prog" id="sProg"></span></div></div>
     <div class="show">
-      <div class="brw"><div class="bar"><i></i><i></i><i></i><span id="sUrl">www.matchpointtennis.it</span></div><img id="sImg" src="img/tennis-elegante.jpg" alt="Anteprima dello stile scelto"></div>
+      <div class="brw" id="sBrw"><div class="bar"><i></i><i></i><i></i><span id="sUrl">www.matchpointtennis.it</span></div><div class="sl"><img id="sImg" class="on" src="img/tennis-elegante.jpg" alt="Anteprima dello stile scelto"><img id="sImg2" alt=""></div></div>
       <div class="sdesc" id="sDesc"></div>
     </div>
   </div>
@@ -384,7 +431,7 @@ footer nav{display:flex;gap:22px;flex-wrap:wrap}footer a{text-decoration:none}fo
 
 <footer><div class="wrap">
   <span class="flogo"><img src="img/cc-logo-160.webp" alt="" width="38" height="38">© 2026 Central Court · Sito e gestionale per circoli di tennis e padel</span>
-  <nav><a href="#prodotto">Il prodotto</a><a href="#gestionale">Il gestionale</a><a href="#stili">I siti</a><a href="#prezzi">Prezzi</a><a href="#contatti">Contatti</a></nav>
+  <nav><a href="#prodotto">Il prodotto</a><a href="#gestionale">Il gestionale</a><a href="#edizioni">Tennis e padel</a><a href="#prezzi">Prezzi</a><a href="#contatti">Contatti</a></nav>
 </div></footer>
 
 <script>
@@ -394,18 +441,39 @@ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const top=$('#top');const onS=()=>top.classList.toggle('solid',scrollY>40);addEventListener('scroll',onS,{passive:true});onS();
 $('#burger').addEventListener('click',()=>document.body.classList.toggle('menu'));
 $$('#nav a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('menu')));
+/* testata scenica */
+{const RM=matchMedia('(prefers-reduced-motion: reduce)').matches,hero=$('.hero');
+ const rot=[...$$('#rot b')];let ri=0;setInterval(()=>{const a=rot[ri];a.classList.remove('on');a.classList.add('out');setTimeout(()=>a.classList.remove('out'),700);ri=(ri+1)%rot.length;rot[ri].classList.add('on')},2600);
+ const cyc=(id,ms)=>{const im=[...$$(id+' img')];let i=0;setInterval(()=>{im[i].classList.remove('on');i=(i+1)%im.length;im[i].classList.add('on')},ms)};cyc('#slides',3400);setTimeout(()=>cyc('#pslides',3400),1700);
+ const T=[['📅','Prenotazione confermata','Campo 1 · oggi alle 18:00',''],['✓✓','Invito al torneo inviato','42 giocatori su WhatsApp','wa'],['€','Quota incassata','Scuola tennis · ricevuta pronta',''],['🏆','Risultato aggiornato','Quarti di finale · 6-4 7-5',''],['👤','Nuovo socio','Tessera e certificato registrati','']];
+ const box=$('#toasts');let ti=0;const toast=()=>{const [ic,a,b,c]=T[ti++%T.length];const d=document.createElement('div');d.className='toast '+c;d.innerHTML='<i>'+ic+'</i><div><small>'+a+'</small><b>'+b+'</b></div>';box.appendChild(d);requestAnimationFrame(()=>requestAnimationFrame(()=>d.classList.add('in')));
+  const all=box.querySelectorAll('.toast:not(.gone)');if(all.length>2){const o=all[0];o.classList.add('gone');setTimeout(()=>o.remove(),600)}};setTimeout(()=>{toast();setInterval(toast,2800)},1800);
+ if(!RM&&matchMedia('(pointer:fine)').matches){const tilt=$('#tilt');hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+   hero.style.setProperty('--mx',x*100+'%');hero.style.setProperty('--my',y*100+'%');tilt.style.setProperty('--ry',(x-.5)*-16+'deg');tilt.style.setProperty('--rx',(y-.5)*10+'deg');tilt.style.setProperty('--gx',(x-.5)*120+'%')});
+   hero.addEventListener('pointerleave',()=>{tilt.style.removeProperty('--ry');tilt.style.removeProperty('--rx')})}
+ const cv=$('#dust'),cx=cv.getContext('2d');let P=[],W,H;const rs=()=>{W=cv.width=hero.offsetWidth;H=cv.height=hero.offsetHeight;P=Array.from({length:Math.round(W/22)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,v:Math.random()*.25+.05,a:Math.random()*.5+.15,p:Math.random()*6}))};rs();addEventListener('resize',rs);
+ let vis=true;new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(hero);
+ const fr=t=>{if(vis&&!RM){cx.clearRect(0,0,W,H);for(const d of P){d.y-=d.v;d.x+=Math.sin(t/1800+d.p)*.18;if(d.y<-5){d.y=H+5;d.x=Math.random()*W}cx.globalAlpha=d.a*(.6+.4*Math.sin(t/900+d.p));cx.fillStyle='#e8cf98';cx.beginPath();cx.arc(d.x,d.y,d.r,0,7);cx.fill()}}requestAnimationFrame(fr)};requestAnimationFrame(fr);}
 /* segmenti */
 const seg=(id,fn)=>{const g=$(id);g.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));fn(b.dataset.v)}))};
 /* stili del sito */
 const STILI={elegante:{t:'Elegante',p:'Raffinato e classico, per i circoli con storia.',l:['Foto a tutto schermo con titoli che entrano parola per parola','Caratteri da rivista e dettagli in oro','Prenotazione rapida già nella testata']},
  vivace:{t:'Vivace',p:'Colori pieni ed energia, per i circoli giovani.',l:['Testata divisa con titolo grande e bollino animato','Orari liberi di oggi cliccabili in home','Blocchi di colore e grafiche decise']},
  moderna:{t:'Moderna',p:'Chiara e intuitiva come un\'app.',l:['Prenotazione in tre tocchi in apertura','Scorciatoie grandi e risultati che scorrono','Barra fissa con Prenota e WhatsApp sul telefono']}};
-let st='elegante',sp='tennis';
-const sImg=$('#sImg');
-const drawS=()=>{sImg.style.opacity=0;setTimeout(()=>{sImg.src='img/'+sp+'-'+st+'.jpg';sImg.style.opacity=1},180);
- $('#sUrl').textContent=sp==='tennis'?'www.matchpointtennis.it':'www.ondapadel.it';const d=STILI[st];
- $('#sDesc').innerHTML='<p class="kick">Stile '+d.t+'</p><h3>'+d.p+'</h3><ul>'+d.l.map(x=>'<li>'+x+'</li>').join('')+'</ul><p style="margin-top:22px"><a class="btn b-navy" target="_blank" rel="noopener" href="'+(sp==='tennis'?'demo/tennis/':'demo/padel/')+'">Provalo nella demo</a></p>'};
-seg('#sStile',v=>{st=v;drawS()});seg('#sSport',v=>{sp=v;drawS()});drawS();
+const SPORT={tennis:{n:'Tennis',url:'www.matchpointtennis.it',demo:'demo/tennis/',club:'Match Point',f:['Ore singole o doppie, con supplemento luce','Tabelloni e torneo sociale con classifica','Maestri, scuola tennis e quote mensili','Tessere FITP e certificati sotto controllo']},
+ padel:{n:'Padel',url:'www.ondapadel.it',demo:'demo/padel/',club:'Onda Padel',f:['Turni da 60, 90 o 120 minuti ogni mezz\'ora','Tornei a coppie, Americano e lega','Istruttori e scuola padel a mezz\'ora','Colori pensati per l\'energia del padel']}};
+let st='elegante',sp='tennis',auto=true;
+const im1=$('#sImg'),im2=$('#sImg2');let front=im1;
+const drawS=()=>{const back=front===im1?im2:im1;back.src='img/'+sp+'-'+st+'.jpg';back.onload=()=>{back.classList.add('on');front.classList.remove('on');front=back};
+ $('#sUrl').textContent=SPORT[sp].url;const d=STILI[st],S=SPORT[sp];
+ const sd=$('#sDesc');sd.classList.remove('in');void sd.offsetWidth;
+ sd.innerHTML='<p class="kick">Central Court '+S.n+' · stile '+d.t+'</p><h3>'+d.p+'</h3><ul>'+d.l.map(x=>'<li>'+x+'</li>').join('')+'</ul><div class="chips">'+S.f.map(x=>'<span>'+x+'</span>').join('')+'</div><p style="margin-top:24px"><a class="btn b-gold shine" target="_blank" rel="noopener" href="'+S.demo+'">Apri la demo '+S.club+'</a></p>';sd.classList.add('in')};
+const ORD=['elegante','vivace','moderna'],prog=$('#sProg');
+const setBtn=(id,v)=>$$(id+' button').forEach(x=>x.classList.toggle('on',x.dataset.v===v));
+const moveProg=()=>{const b=$('#sStile button.on');prog.style.width=b.offsetWidth+'px';prog.style.left=b.offsetLeft+'px'};
+seg('#sStile',v=>{auto=false;st=v;drawS();moveProg()});seg('#sSport',v=>{auto=false;sp=v;drawS()});drawS();setTimeout(moveProg,50);addEventListener('resize',moveProg);
+let tick=0;new IntersectionObserver(e=>{if(e[0].isIntersecting&&!tick)tick=setInterval(()=>{if(!auto)return clearInterval(tick);let i=ORD.indexOf(st)+1;if(i>2){i=0;sp=sp==='tennis'?'padel':'tennis';setBtn('#sSport',sp)}st=ORD[i];setBtn('#sStile',st);moveProg();drawS()},4200)},{threshold:.4}).observe($('#edizioni'));
+{const bw=$('#sBrw');if(matchMedia('(pointer:fine)').matches)bw.addEventListener('pointermove',e=>{const r=bw.getBoundingClientRect();bw.style.transform='perspective(1400px) rotateY('+((e.clientX-r.left)/r.width-.5)*6+'deg) rotateX('+((e.clientY-r.top)/r.height-.5)*-5+'deg)'});bw.addEventListener('pointerleave',()=>bw.style.transform='')}
 /* moduli del gestionale */
 const MODS=[['panoramica','Panoramica','La giornata del circolo a colpo d\'occhio: campi di oggi, incassi, scadenze, tornei in corso e compleanni dei soci.'],
  ['calendario','Campi e lezioni','Prenotazioni, lezioni di ogni maestro e ore riservate al circolo, senza sovrapposizioni possibili.'],
