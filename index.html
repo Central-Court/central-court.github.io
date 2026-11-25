@@ -62,7 +62,6 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:3
 @keyframes beamIn{to{opacity:1}}@keyframes sway{to{transform:rotate(-10deg)}}
 .beam.b2{animation-name:beamIn,sway2}@keyframes sway2{to{transform:rotate(30deg)}}
 .spot{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(520px circle at var(--mx,70%) var(--my,30%),rgba(216,191,140,.13),transparent 60%);transition:background .2s}
-.dust{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 .h-in{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:56px;align-items:center}
 .h-kick{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);margin:0 0 22px;opacity:0;animation:up .8s .2s forwards}
 .h-kick img{border-radius:50%;box-shadow:0 0 0 4px rgba(216,191,140,.12),0 0 30px rgba(216,191,140,.35);animation:spin 18s linear infinite}
@@ -261,7 +260,6 @@ footer nav{display:flex;gap:22px;flex-wrap:wrap}footer a{text-decoration:none}fo
 
 <section class="hero" id="top">
   <div class="beam b1"></div><div class="beam b2"></div><div class="spot" id="spot"></div>
-  <canvas class="dust" id="dust" aria-hidden="true"></canvas>
   <svg class="court" viewBox="0 0 1000 560" aria-hidden="true">
     <defs><radialGradient id="gb"><stop offset="0" stop-color="#fff3d6"/><stop offset=".55" stop-color="#e8cf98"/><stop offset="1" stop-color="#b8955a"/></radialGradient>
       <linearGradient id="tr" x1="0" x2="1"><stop offset="0" stop-color="#d8bf8c" stop-opacity="0"/><stop offset="1" stop-color="#d8bf8c" stop-opacity=".9"/></linearGradient></defs>
@@ -277,7 +275,7 @@ footer nav{display:flex;gap:22px;flex-wrap:wrap}footer a{text-decoration:none}fo
       <h1><span class="w"><span>Tutto</span></span> <span class="w"><span>il</span></span> <span class="w"><span>circolo,</span></span><br><span class="w"><span>in</span></span> <span class="w"><span>pochi</span></span> <span class="w"><span><i>clic.</i></span></span></h1>
       <p class="h-p">Un gestionale completo e veloce per la segreteria, un sito elegante e interattivo per i soci. Prenotazioni, soci, scadenze, tornei, scuola e conti in un unico sistema, personalizzato sulle vostre esigenze.</p>
       <div class="cta"><a class="btn b-gold shine" href="#edizioni">Guarda le demo dal vivo</a><a class="btn b-line" href="#contatti">Parliamo del tuo circolo</a></div>
-      <div class="h-mar"><div class="h-track"><span>Prenotazioni online</span><span>Soci e scadenze</span><span>Tornei e tabelloni</span><span>Inviti su WhatsApp</span><span>Scuola e corsi</span><span>Contabilità e ricevute</span><span>Utenti e permessi</span><span>Risultati live</span><span>Prenotazioni online</span><span>Soci e scadenze</span><span>Tornei e tabelloni</span><span>Inviti su WhatsApp</span><span>Scuola e corsi</span><span>Contabilità e ricevute</span><span>Utenti e permessi</span><span>Risultati live</span></div></div>
+      <div class="h-mar"><div class="h-track"><span>Prenotazioni online</span><span>Soci e scadenze</span><span>Tornei e tabelloni</span><span>Inviti su WhatsApp</span><span>Scuola e corsi</span><span>Contabilità e ricevute</span><span>Utenti e permessi</span><span>Eventi e risultati sul sito</span><span>Prenotazioni online</span><span>Soci e scadenze</span><span>Tornei e tabelloni</span><span>Inviti su WhatsApp</span><span>Scuola e corsi</span><span>Contabilità e ricevute</span><span>Utenti e permessi</span><span>Eventi e risultati sul sito</span></div></div>
     </div>
     <div class="stage" id="stage">
       <div class="tilt" id="tilt">
@@ -302,7 +300,7 @@ footer nav{display:flex;gap:22px;flex-wrap:wrap}footer a{text-decoration:none}fo
     <div class="split"><div><p class="kick">Il prodotto</p><h2 class="h2">Un solo sistema, al posto di tre.</h2></div><p class="lead">Il quaderno delle prenotazioni, i fogli Excel dei soci, i gruppi WhatsApp dei tornei: Central Court li sostituisce con un sistema ordinato, semplice da usare anche per chi in segreteria non è un tecnico.</p></div>
     <div class="pillars">
       <div class="pil"><svg viewBox="0 0 48 48"><rect x="6" y="9" width="36" height="24" rx="2"/><path d="M18 40h12M24 33v7M6 15h36"/></svg><h3>Un sito che conquista</h3><p>Foto in alta definizione, risultati dei tornei aggiornati, blog del circolo e prenotazione dei campi in un minuto, dal computer e dal telefono.</p></div>
-      <div class="pil"><svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="3"/><path d="M8 17h32M17 17v23M22 25h12M22 31h8"/></svg><h3>Un gestionale chiaro</h3><p>Calendario di campi e lezioni, schede di soci e giocatori, avvisi per visite mediche e rinnovi, contabilità con ricevute e stampa di ogni elenco.</p></div>
+      <div class="pil"><svg viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32" rx="3"/><path d="M8 17h32M17 17v23M22 25h12M22 31h8"/></svg><h3>Un gestionale chiaro</h3><p>Calendario di campi e lezioni, soci e giocatori, avvisi per visite mediche e rinnovi, contabilità con ricevute. E da qui pubblichi sul sito eventi, tornei e risultati, senza toccare una riga di codice.</p></div>
       <div class="pil"><svg viewBox="0 0 48 48"><path d="M24 6l14 6v11c0 9-6 16-14 19-8-3-14-10-14-19V12z"/><path d="M17 24l5 5 9-10"/></svg><h3>Dati tuoi, al sicuro</h3><p>Il sistema gira sull'hosting del circolo, in Italia. I dati restano vostri, con backup scaricabile in ogni momento dal gestionale.</p></div>
     </div>
   </div>
@@ -318,7 +316,7 @@ footer nav{display:flex;gap:22px;flex-wrap:wrap}footer a{text-decoration:none}fo
     <div class="gfeat">
       <div><b>Tutto su WhatsApp</b><span>Inviti ai tornei e avvisi ai soci, col messaggio già scritto e personalizzato.</span></div>
       <div><b>Stampa ovunque</b><span>Elenchi, classifiche e risultati stampati con il logo del circolo.</span></div>
-      <div><b>Ricevute</b><span>Ogni incasso con la sua ricevuta, pronta da stampare.</span></div>
+      <div><b>Pubblichi sul sito</b><span>Eventi, tornei e risultati escono sul sito appena li salvi nel gestionale.</span></div>
       <div><b>Backup</b><span>Tutti i dati del circolo scaricabili con un clic.</span></div>
     </div>
   </div>
@@ -451,9 +449,7 @@ $$('#nav a').forEach(a=>a.addEventListener('click',()=>document.body.classList.r
  if(!RM&&matchMedia('(pointer:fine)').matches){const tilt=$('#tilt');hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
    hero.style.setProperty('--mx',x*100+'%');hero.style.setProperty('--my',y*100+'%');tilt.style.setProperty('--ry',(x-.5)*-16+'deg');tilt.style.setProperty('--rx',(y-.5)*10+'deg');tilt.style.setProperty('--gx',(x-.5)*120+'%')});
    hero.addEventListener('pointerleave',()=>{tilt.style.removeProperty('--ry');tilt.style.removeProperty('--rx')})}
- const cv=$('#dust'),cx=cv.getContext('2d');let P=[],W,H;const rs=()=>{W=cv.width=hero.offsetWidth;H=cv.height=hero.offsetHeight;P=Array.from({length:Math.round(W/22)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.3,v:Math.random()*.25+.05,a:Math.random()*.5+.15,p:Math.random()*6}))};rs();addEventListener('resize',rs);
- let vis=true;new IntersectionObserver(e=>vis=e[0].isIntersecting).observe(hero);
- const fr=t=>{if(vis&&!RM){cx.clearRect(0,0,W,H);for(const d of P){d.y-=d.v;d.x+=Math.sin(t/1800+d.p)*.18;if(d.y<-5){d.y=H+5;d.x=Math.random()*W}cx.globalAlpha=d.a*(.6+.4*Math.sin(t/900+d.p));cx.fillStyle='#e8cf98';cx.beginPath();cx.arc(d.x,d.y,d.r,0,7);cx.fill()}}requestAnimationFrame(fr)};requestAnimationFrame(fr);}
+}
 /* segmenti */
 const seg=(id,fn)=>{const g=$(id);g.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{g.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));fn(b.dataset.v)}))};
 /* stili del sito */
@@ -478,12 +474,12 @@ let tick=0;new IntersectionObserver(e=>{if(e[0].isIntersecting&&!tick)tick=setIn
 const MODS=[['panoramica','Panoramica','La giornata del circolo a colpo d\'occhio: campi di oggi, incassi, scadenze, tornei in corso e compleanni dei soci.'],
  ['calendario','Campi e lezioni','Prenotazioni, lezioni di ogni maestro e ore riservate al circolo, senza sovrapposizioni possibili.'],
  ['scadenze','Soci e scadenze','Certificati medici, quote e tessere in scadenza, con l\'avviso pronto da inviare su WhatsApp.'],
- ['tornei','Tornei','Organizza i tornei e invita i giocatori su WhatsApp: iscrizioni online dal sito, tabellone e risultati aggiornati in tempo reale.'],
+ ['tornei','Tornei','Organizza i tornei e invita i giocatori su WhatsApp: iscrizioni online dal sito, e tabellone e risultati che pubblichi sul sito in tempo reale.'],
  ['comunicazioni','Comunicazioni','Un messaggio WhatsApp a tutti i soci, ai giocatori o a un gruppo preciso, già scritto e col nome di ognuno.'],
  ['scuola','Scuola e corsi','Corsi, allievi e quote mensili, con chi deve ancora pagare in evidenza.'],
  ['contabilita','Contabilità','Entrate e uscite per categoria, ricevute stampabili e rendiconto annuale.'],
  ['permessi','Utenti e permessi','Solo le persone autorizzate entrano. L\'amministratore crea gli accessi e sceglie le sezioni di segreteria, maestri e collaboratori.'],
- ['blog','Blog del circolo','Scrivi un articolo come un messaggio, aggiungi le foto e pubblicalo in home.']];
+ ['blog','Eventi e notizie sul sito','Racconta eventi, risultati e novità: scrivi l\'articolo come un messaggio, aggiungi le foto e lo pubblichi sul sito con un clic.']];
 const mods=$('#mods'),gImg=$('#gImg');let gi=0,gt;
 mods.innerHTML=MODS.map((m,i)=>'<button class="mod'+(i?'':' on')+'" data-i="'+i+'"><b>'+m[1]+'</b><span>'+m[2]+'</span></button>').join('');
 const goG=i=>{gi=i;$$('.mod').forEach((b,k)=>b.classList.toggle('on',k===i));gImg.style.opacity=0;setTimeout(()=>{gImg.src='img/g-'+MODS[i][0]+'.jpg';gImg.style.opacity=1},180)};
