@@ -352,6 +352,7 @@ footer nav{display:flex;gap:22px;flex-wrap:wrap}footer a{text-decoration:none}fo
       <details><summary>Quanto tempo serve per partire?</summary><p>Consegniamo sito e gestionale entro 15 giorni lavorativi dalla consegna di logo, foto e tariffe, personalizzazioni comprese.</p></details>
       <details><summary>Il nostro circolo è lontano: come funziona?</summary><p>Lavoriamo con circoli di tutta Italia, interamente a distanza. Insieme al sistema ricevete un manuale d'uso dettagliato e una formazione in videochiamata con la segreteria.</p></details>
       <details><summary>Bisogna essere esperti di computer?</summary><p>No. Central Court è pensato per essere usato da tutti: schermate chiare, pulsanti grandi e un manuale che spiega ogni sezione passo per passo.</p></details>
+      <details><summary>Chi può entrare nel gestionale?</summary><p>Solo le persone che l'amministratore del circolo autorizza, con email e password personali. Per ognuna sceglie il ruolo (segreteria, maestro, collaboratore…) e le sezioni che può vedere; può disattivare un accesso in qualsiasi momento, senza chiedere a noi.</p></details>
       <details><summary>Possiamo chiedere funzioni su misura?</summary><p>Sì. Sito e gestionale si personalizzano sulle esigenze del circolo: sezioni, moduli, tariffe, campi e funzioni dedicate. Ne parliamo nella prima videochiamata.</p></details>
       <details><summary>Possiamo cambiare stile al sito in futuro?</summary><p>Sì, in qualsiasi momento dalle impostazioni del gestionale. Contenuti, prenotazioni e dati restano gli stessi.</p></details>
     </div>
@@ -413,6 +414,7 @@ const MODS=[['panoramica','Panoramica','La giornata del circolo a colpo d\'occhi
  ['comunicazioni','Comunicazioni','Un messaggio WhatsApp a tutti i soci, ai giocatori o a un gruppo preciso, già scritto e col nome di ognuno.'],
  ['scuola','Scuola e corsi','Corsi, allievi e quote mensili, con chi deve ancora pagare in evidenza.'],
  ['contabilita','Contabilità','Entrate e uscite per categoria, ricevute stampabili e rendiconto annuale.'],
+ ['permessi','Utenti e permessi','Solo le persone autorizzate entrano. L\'amministratore crea gli accessi e sceglie le sezioni di segreteria, maestri e collaboratori.'],
  ['blog','Blog del circolo','Scrivi un articolo come un messaggio, aggiungi le foto e pubblicalo in home.']];
 const mods=$('#mods'),gImg=$('#gImg');let gi=0,gt;
 mods.innerHTML=MODS.map((m,i)=>'<button class="mod'+(i?'':' on')+'" data-i="'+i+'"><b>'+m[1]+'</b><span>'+m[2]+'</span></button>').join('');
