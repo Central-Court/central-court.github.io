@@ -69,7 +69,7 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:3
 @media(max-width:1000px){.burger{display:block}.nav{position:fixed;inset:78px 0 auto;background:var(--deep);flex-direction:column;align-items:stretch;gap:0;padding:10px max(5vw,16px) 26px;display:none;border-top:1px solid var(--lineN)}.nav a{padding:15px 0;border-bottom:1px solid var(--lineN);font-size:17px}.nav .btn{margin-top:18px;justify-content:center}body.menu .nav{display:flex}body.menu .top{background:var(--deep)}}
 /* apertura */
 .hero{background:radial-gradient(120% 90% at 80% 20%,#14305a 0%,var(--navy) 45%,var(--deep) 100%);color:var(--cream);padding:150px 0 110px;position:relative;overflow:hidden;isolation:isolate}
-.hero .court{position:absolute;right:-6%;top:6%;width:min(980px,90vw);opacity:.6;pointer-events:none;z-index:-1}
+.hero .court{position:absolute;left:-6%;top:6%;width:min(980px,90vw);opacity:.6;pointer-events:none;z-index:-1}
 .court .lines>*{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.2s cubic-bezier(.6,0,.2,1) forwards}
 .court .lines>*:nth-child(2){animation-delay:.35s}.court .lines>*:nth-child(3){animation-delay:.7s}.court .lines .net{animation-delay:1s;filter:drop-shadow(0 0 6px rgba(216,191,140,.8))}
 @keyframes draw{to{stroke-dashoffset:0}}
@@ -81,7 +81,7 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:3
 @keyframes beamIn{to{opacity:1}}@keyframes sway{to{transform:rotate(-10deg)}}
 .beam.b2{animation-name:beamIn,sway2}@keyframes sway2{to{transform:rotate(30deg)}}
 .spot{position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(520px circle at var(--mx,70%) var(--my,30%),rgba(216,191,140,.13),transparent 60%);transition:background .2s}
-.h-in{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:56px;align-items:center}
+.h-in{position:relative;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:56px;align-items:center}.h-in .stage{order:-1}
 .h-kick{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold2);margin:0 0 22px;opacity:0;animation:up .8s .2s forwards}
 .h-kick img{border-radius:50%;box-shadow:0 0 0 4px rgba(216,191,140,.12),0 0 30px rgba(216,191,140,.35);animation:spin 18s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -102,7 +102,7 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:3
 @keyframes mar{to{transform:translateX(-50%)}}
 .stage{position:relative;padding:20px 0 40px;perspective:1600px;opacity:0;animation:stIn 1.4s .5s cubic-bezier(.2,.8,.2,1) forwards}
 @keyframes stIn{from{opacity:0;transform:translateY(40px) scale(.96)}to{opacity:1;transform:none}}
-.tilt{position:relative;transform-style:preserve-3d;transform:rotateY(var(--ry,-8deg)) rotateX(var(--rx,4deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.tilt{position:relative;transform-style:preserve-3d;transform:rotateY(var(--ry,8deg)) rotateX(var(--rx,4deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .laptop{position:relative;z-index:1}
 .laptop .scr{position:relative;background:#0c1220;border-radius:14px 14px 4px 4px;padding:10px 10px 12px;border:1px solid rgba(216,191,140,.35);box-shadow:0 50px 90px -30px rgba(0,0,0,.8),0 0 60px -20px rgba(216,191,140,.35);overflow:hidden}
 .sl{position:relative;aspect-ratio:16/10;border-radius:4px;overflow:hidden}.phone .sl{aspect-ratio:9/19.5;border-radius:23px}
