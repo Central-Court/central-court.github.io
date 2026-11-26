@@ -70,9 +70,9 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
 </head>
 <body>
 <header class="top"><div class="wrap"><a class="logo" href="/"><img src="/img/cc-logo-160.webp" alt="Logo Central Court" width="42" height="42"><span><b>Central Court</b><small>Gestionale per circoli</small></span></a><a class="back" href="/">← Torna al sito</a></div></header>
-<section class="hero"><div class="wrap"><p class="kick">Vendite aperte dal 1° gennaio 2027</p><h1>Ordina Central Court</h1><p class="l">Scegli la soluzione, inserisci i dati del circolo e invia l'ordine su WhatsApp. Si paga con bonifico, in un'unica soluzione o in 12 rate. Consegna entro 15 giorni lavorativi, personalizzazione compresa.</p></div></section>
+<section class="hero"><div class="wrap"><p class="kick">Vendite aperte dal 1° dicembre 2026</p><h1>Ordina Central Court</h1><p class="l">Scegli la soluzione, inserisci i dati del circolo e invia l'ordine su WhatsApp. Si paga con bonifico, in un'unica soluzione o in 12 rate. Consegna entro 15 giorni lavorativi, personalizzazione compresa.</p></div></section>
 <div class="wrap lay one"><article class="doc">
-<div id="chiuso" class="closed" hidden><b>Gli ordini aprono il 1° gennaio 2027.</b> Puoi già compilare il modulo per vedere il riepilogo, oppure <a href="https://wa.me/393661952051?text=Ciao%2C%20vorrei%20una%20presentazione%20di%20Central%20Court">chiederci una presentazione su WhatsApp</a>.</div>
+<div id="chiuso" class="closed" hidden><b>Gli ordini aprono il 1° dicembre 2026.</b> Puoi già compilare il modulo per vedere il riepilogo, oppure <a href="https://wa.me/393661952051?text=Ciao%2C%20vorrei%20una%20presentazione%20di%20Central%20Court">chiederci una presentazione su WhatsApp</a>.</div>
 <form class="oform" id="of" novalidate>
 <div class="step"><h2><span class="n">1</span>Soluzione</h2>
  <div class="cards" id="cSol">
@@ -119,13 +119,13 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
 <div class="ck" id="ck" role="dialog" aria-label="Informativa cookie"><p>Questo sito usa solo un dato tecnico, salvato nel tuo browser, per ricordare che hai chiuso questo avviso. Niente cookie di profilazione, niente statistiche, niente pubblicità. <a href="/privacy.html#cookie">Leggi l'informativa</a></p><button id="ckOk">Ho capito</button></div>
 <script>{const c=document.getElementById('ck');let ok=false;try{ok=localStorage.getItem('cc_ck')==='1'}catch(e){}if(!ok)c.classList.add('on');document.getElementById('ckOk').onclick=()=>{try{localStorage.setItem('cc_ck','1')}catch(e){}c.classList.remove('on')};document.querySelectorAll('[data-ck]').forEach(a=>a.onclick=e=>{e.preventDefault();c.classList.add('on')})}</script>
 <script>
-const APERTURA = new Date('2027-01-01T00:00:00+01:00');
+const APERTURA = new Date('2026-12-01T00:00:00+01:00');
 const WA = '393661952051';
 {
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const P={g:400,s:500},R={g:40,s:50},NOMI={g:'Gestionale',s:'Sito + gestionale'};
 const q=new URLSearchParams(location.search),prova=q.has('prova'),aperto=prova||Date.now()>=APERTURA.getTime();
-if(!aperto){$('#chiuso').hidden=false;$('#go').disabled=true;$('#go').textContent='Ordini aperti dal 1° gennaio 2027'}
+if(!aperto){$('#chiuso').hidden=false;$('#go').disabled=true;$('#go').textContent='Ordini aperti dal 1° dicembre 2026'}
 if(q.get('piano')==='g'||q.get('piano')==='s')$('input[name=sol][value='+q.get('piano')+']').checked=true;
 const val=n=>$('input[name='+n+']:checked').value;
 const upd=()=>{const s=val('sol'),d=val('dur');
