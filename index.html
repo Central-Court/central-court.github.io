@@ -66,7 +66,7 @@ footer .flogo{display:flex;align-items:center;gap:12px}footer .flogo img{width:3
 .nav a:hover{color:var(--gold2)}
 .nav .btn{padding:11px 20px;color:#fff}
 .burger{display:none;background:none;border:1px solid var(--lineN);color:var(--cream);width:44px;height:44px;border-radius:12px;font-size:20px;cursor:pointer}
-@media(max-width:1000px){.burger{display:block}.nav{position:fixed;inset:78px 0 auto;background:var(--deep);flex-direction:column;align-items:stretch;gap:0;padding:10px max(5vw,16px) 26px;display:none;border-top:1px solid var(--lineN)}.nav a{padding:15px 0;border-bottom:1px solid var(--lineN);font-size:17px}.nav .btn{margin-top:18px;justify-content:center}body.menu .nav{display:flex}body.menu .top{background:var(--deep)}}
+@media(max-width:1120px){.burger{display:block}.nav{position:fixed;inset:78px 0 auto;background:var(--deep);flex-direction:column;align-items:stretch;gap:0;padding:10px max(5vw,16px) 26px;display:none;border-top:1px solid var(--lineN)}.nav a{padding:15px 0;border-bottom:1px solid var(--lineN);font-size:17px}.nav .btn{margin-top:18px;justify-content:center}body.menu .nav{display:flex}body.menu .top{background:var(--deep)}}
 /* apertura */
 .hero{background:radial-gradient(120% 90% at 80% 20%,#14305a 0%,var(--navy) 45%,var(--deep) 100%);color:var(--cream);padding:150px 0 110px;position:relative;overflow:hidden;isolation:isolate}
 .hero .court{position:absolute;left:-6%;top:6%;width:min(980px,90vw);opacity:.6;pointer-events:none;z-index:-1}
@@ -269,6 +269,7 @@ footer nav{display:flex;gap:22px;flex-wrap:wrap}footer .legal{flex-basis:100%;bo
 .ck.on{display:flex}.ck p{margin:0;flex:1}.ck a{color:var(--gold2)}.ck button{background:var(--gold);color:#fff;border:0;border-radius:999px;padding:11px 20px;font:600 14px var(--sans);cursor:pointer;white-space:nowrap}
 @media(max-width:700px){.ck{flex-direction:column;align-items:stretch}}footer a{text-decoration:none}footer a:hover{color:var(--gold2)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+.nav a{white-space:nowrap}.top .logo{flex-shrink:0}.top .logo b{white-space:nowrap}@media(min-width:1121px) and (max-width:1300px){.nav{gap:16px}.nav a{font-size:14px}}
 </style>
 </head>
 <body>
@@ -276,7 +277,7 @@ footer nav{display:flex;gap:22px;flex-wrap:wrap}footer .legal{flex-basis:100%;bo
   <div class="wrap in">
     <a class="logo" href="#"><img src="img/cc-logo-160.webp" srcset="img/cc-logo-160.webp 1x, img/cc-logo-320.webp 2x" alt="Logo Central Court" width="46" height="46"><span><b>Central <em>Court</em></b><small>Gestionale per circoli</small></span></a>
     <nav class="nav" id="nav">
-      <a href="#prodotto">Il prodotto</a><a href="#gestionale">Il gestionale</a><a href="#edizioni">Tennis e padel</a><a href="#misura">Su misura</a><a href="#prezzi">Prezzi</a><a href="#domande">Domande</a>
+      <a href="#prodotto">Il prodotto</a><a href="#gestionale">Il gestionale</a><a href="#edizioni">Tennis e padel</a><a href="#misura">Su misura</a><a href="#prezzi">Prezzi</a><a href="#domande">Domande</a><a href="/video/">Video</a>
       <a class="btn b-gold" href="/ordina.html">Ordina subito</a>
     </nav>
     <button class="burger" id="burger" aria-label="Apri il menu">☰</button>
