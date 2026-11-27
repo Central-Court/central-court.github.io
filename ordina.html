@@ -115,11 +115,11 @@ footer nav{display:flex;gap:18px;flex-wrap:wrap}
  <p class="note">L'ordine si apre in WhatsApp, già compilato con i dati e le caselle che hai spuntato: devi solo premere invia. Il contratto è concluso quando ti confermiamo l'ordine; con la conferma ricevi le condizioni in PDF.</p>
 </div>
 </form>
-<div class="done" id="done"><h2>Ordine pronto</h2><p>Abbiamo aperto WhatsApp con il tuo ordine: <b>premi invia</b> per mandarcelo. Se non si è aperto, <a id="waAgain" href="#" target="_blank" rel="noopener">tocca qui</a>.</p><p class="note">Ti rispondiamo con la conferma d'ordine e le coordinate per il bonifico.</p></div>
+<div class="done" id="done"><h2>Ordine pronto</h2><p>Abbiamo aperto WhatsApp con il tuo ordine: <b>premi invia</b> per mandarcelo. Se non si è aperto, <a data-cc-no id="waAgain" href="#" target="_blank" rel="noopener">tocca qui</a>.</p><p class="note">Ti rispondiamo con la conferma d'ordine e le coordinate per il bonifico.</p></div>
 </article></div>
 <footer><div class="wrap"><span>© 2026 Central Court · Marco Abbundo · Via Leopardi 49, 84091 Battipaglia (SA) · Vendita occasionale, senza Partita IVA</span>
 <nav><a href="/condizioni-di-vendita.html">Condizioni di vendita e licenza</a><a href="/privacy.html">Privacy e cookie</a><a href="/ordina.html">Ordina</a></nav></div></footer>
-<div class="ck" id="ck" role="dialog" aria-label="Informativa cookie"><p>Questo sito usa solo un dato tecnico, salvato nel tuo browser, per ricordare che hai chiuso questo avviso. Niente cookie di profilazione, niente statistiche, niente pubblicità. <a href="/privacy.html#cookie">Leggi l'informativa</a></p><button id="ckOk">Ho capito</button></div>
+<div class="ck" id="ck" role="dialog" aria-label="Informativa cookie"><p>Questo sito usa solo un dato tecnico, salvato nel tuo browser, per ricordare che hai chiuso questo avviso. Niente cookie di profilazione e niente pubblicità: contiamo solo le visite, in forma anonima e senza cookie. <a href="/privacy.html#cookie">Leggi l'informativa</a></p><button id="ckOk">Ho capito</button></div>
 <script>{const c=document.getElementById('ck');let ok=false;try{ok=localStorage.getItem('cc_ck')==='1'}catch(e){}if(!ok)c.classList.add('on');document.getElementById('ckOk').onclick=()=>{try{localStorage.setItem('cc_ck','1')}catch(e){}c.classList.remove('on')};document.querySelectorAll('[data-ck]').forEach(a=>a.onclick=e=>{e.preventDefault();c.classList.add('on')})}</script>
 <script>
 const APERTURA = new Date('2026-12-01T00:00:00+01:00');
@@ -148,10 +148,10 @@ $('#of').addEventListener('submit',e=>{e.preventDefault();if(!aperto)return;
   'Referente: '+$('#ref').value,'Circolo: '+$('#circ').value,'CF/P.IVA: '+$('#cf').value,'Sede: '+$('#ind').value,'Telefono: '+$('#tel').value,'Email: '+$('#mail').value,($('#nota').value.trim()?'Note: '+$('#nota').value.trim():''),'',
   '✅ Accetto le Condizioni di vendita e la Licenza d\'uso (versione del 26/11/2026)','✅ Ho letto l\'informativa privacy','✅ Chiedo l\'avvio immediato e riconosco che perderò il diritto di recesso alla consegna','','Ordine compilato il '+ora].filter((x,i,a)=>x!==''||a[i-1]!=='').join('\n');
  const url='https://wa.me/'+WA+'?text='+encodeURIComponent(t);
- $('#waAgain').href=url;window.open(url,'_blank','noopener');
+ $('#waAgain').href=url;window.ccConta&&ccConta('ordine');window.open(url,'_blank','noopener');
  $('#of').style.display='none';$('#done').classList.add('on');scrollTo({top:0,behavior:'smooth'})});
 }
 </script>
 
-</body>
+<script src="/cc.js" defer></script></body>
 </html>
