@@ -127,7 +127,7 @@ const WA = '393793202704';
 {
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const P={g:400,s:500},R={g:40,s:50},NOMI={g:'Gestionale',s:'Sito + gestionale'};
-const q=new URLSearchParams(location.search),prova=q.has('prova'),aperto=prova||Date.now()>=APERTURA.getTime();
+const q=new URLSearchParams(location.search),prova=q.has('prova'),aperto=true;
 if(!aperto){$('#chiuso').hidden=false;$('#go').disabled=true;$('#go').textContent='Ordini aperti dal 1° dicembre 2026'}
 if(q.get('piano')==='g'||q.get('piano')==='s')$('input[name=sol][value='+q.get('piano')+']').checked=true;
 const val=n=>$('input[name='+n+']:checked').value;
